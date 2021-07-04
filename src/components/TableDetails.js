@@ -1,13 +1,27 @@
 import axios from 'axios';
-import React, { useEffect, useState } from 'react'
-import { connect, useDispatch } from 'react-redux';
-import { EmpData } from '../action/action';
+import { useEffect, useState } from 'react';
+import { connect, useSelector } from 'react-redux';
 
 const TableDetails = (props) => {
 
-    const [data, setdata] = useState('')
+    // const data = useSelector(state => state.EmpReducer.userData)
+    // console.log(data)
 
+    const [data, setdata] = useState()
 
+    const tableValue = () => {
+        axios.get('http://localhost:8000/data/')
+            .then((res) => {
+                setdata(res.data)
+                // console.log(res.data)
+            })
+    }
+
+    useEffect(() => {
+        // Make a request for a user with a given ID
+        tableValue()
+
+    }, [])
     return (
         <div>
             <h1 className=" text-danger">employee's detailes</h1>
@@ -26,7 +40,10 @@ const TableDetails = (props) => {
                         <th scope="row">{Data.id}</th>
                         <td>{Data.email}</td>
                         <td>{Data.password}</td>
-                        <td> <button>delete</button><button>update</button></td>
+                        <td>
+                            <button type="delete">delete</button>
+                            <button type="update">update</button>
+                        </td>
                     </tr>)
                     )}
                 </tbody>

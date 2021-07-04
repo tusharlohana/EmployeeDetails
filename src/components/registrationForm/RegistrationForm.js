@@ -48,16 +48,16 @@ const RegistrationForm = (props) => {
                             'successMessage': 'Registration successful. Redirecting to home page..'
                         }))
                         // redirectToHome();
-                        props.showError(null)
+                        // props.showError(null)
                     } else {
-                        props.showError("Some error ocurred");
+                        // props.showError("Some error ocurred");
                     }
                 })
                 .catch(function (error) {
                     console.log(error);
                 });
         } else {
-            props.showError('Please enter valid username and password')
+            // props.showError('Please enter valid username and password')
         }
 
     }
@@ -86,17 +86,7 @@ const RegistrationForm = (props) => {
                         value={state.password}
                         onChange={handleChange}
                     />
-                </div>
-                <div className="form-group text-left">
-                    <label htmlFor="exampleInputPassword1">Confirm Password</label>
-                    <input type="password"
-                        className="form-control mt-2"
-                        id="confirmPassword"
-                        placeholder="Confirm Password"
-                        value={state.password}
-                        onChange={handleChange}
-                    />
-                </div>
+                </div>               
                 <button
                     type="submit"
                     className="btn btn-primary mt-2"

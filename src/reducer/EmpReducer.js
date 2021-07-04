@@ -11,6 +11,8 @@ const EmpReducer = (state = initstate, action) => {
         copyUserData.userData.push(action.payload)
         return copyUserData;
 
+        case "DELETE" :
+            
         default: return state
     }
 }
