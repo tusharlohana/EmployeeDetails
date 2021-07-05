@@ -1,18 +1,21 @@
 import React from 'react'
 
-const initstate = { userData : [] }
+const initstate = { userData: [] }
 
 const EmpReducer = (state = initstate, action) => {
-// debugger
+    // debugger
 
     switch (action.type) {
         case "SUBMIT":
-        const copyUserData = { ...state, }
-        copyUserData.userData.push(action.payload)
-        return copyUserData;
+            const copyUserData = { ...state, }
+            copyUserData.userData.push(action.payload)
+            return copyUserData;
 
-        case "DELETE" :
-            
+        case "DELETE":
+            const copyToDelete = { ...state,}
+            copyToDelete.userData.splice(action.id,1);
+            return copyToDelete;
+
         default: return state
     }
 }

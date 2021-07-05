@@ -6,3 +6,9 @@ export const EmpData = (userdata)=> {
         payload : userdata
     }
 }
+export const deleteContact = (id) => {
+    return {
+        type: "DELETE",
+        id: id
+    }
+}

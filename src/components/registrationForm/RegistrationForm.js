@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React, { useState } from 'react';
 import { connect } from 'react-redux'
-import { EmpData } from '../../action/action';
+import { deleteContact, EmpData } from '../../action/action';
 import { useHistory } from 'react-router';
 
 const RegistrationForm = (props) => {
@@ -104,7 +104,10 @@ const mapStateToProps = state => {
     };
 };
 const mapDispatchToProps = (dispatch, ownProps) => ({
-    submitFun: (data) => dispatch(EmpData(data))
+    submitFun: (data) => dispatch(EmpData(data)),
+    
+    
+
   })
 
 

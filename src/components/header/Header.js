@@ -9,7 +9,7 @@ const Header = () => {
                 <div className="w-75 content row col-3 justify-content-around text-white">
                     <span className="h3">Register</span>
                    <span><Link to="/"> Form</Link></span> 
-                   <span><Link to="/detailes"> TableDetails</Link></span>
+                   <span><Link to="/details"> TableDetails</Link></span>
                 </div>
             </nav>
         </div>

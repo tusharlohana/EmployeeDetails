@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { connect, useSelector } from 'react-redux';
+import { deleteContact } from '../action/action';
 
 const TableDetails = (props) => {
 
@@ -22,6 +23,17 @@ const TableDetails = (props) => {
         tableValue()
 
     }, [])
+
+
+    const deleteContact = (id) => {
+        axios.delete(`http://localhost:8000/data/${id}`, {
+            method: "DELETE"
+        }).then(() => {
+            console.log("blog deleted")
+        })
+
+    }
+
     return (
         <div>
             <h1 className=" text-danger">employee's detailes</h1>
@@ -41,8 +53,13 @@ const TableDetails = (props) => {
                         <td>{Data.email}</td>
                         <td>{Data.password}</td>
                         <td>
-                            <button type="delete">delete</button>
-                            <button type="update">update</button>
+                            <button type="delete"
+                                onClick={deleteContact}
+                                className="btn btn-outline-danger"
+                            >delete</button>
+
+                            <button type="update"
+                                className="btn btn-outline-success">update</button>
                         </td>
                     </tr>)
                     )}
@@ -56,9 +73,13 @@ const mapStateToProps = state => {
         number: state
     };
 };
+const mapDispatchToProps = (dispatch, ownProps) => ({
+    DeleteFun: (data) => dispatch(deleteContact(data))
+
+  })
 
 export default connect(
     mapStateToProps,
-    null
+    mapDispatchToProps
+    
 )(TableDetails);
-
